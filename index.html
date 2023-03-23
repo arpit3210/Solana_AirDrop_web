@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solana AirDrop</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div>
+      <header></header>
+    </div>
+
+    <div class="Box">
+      <div class="Box1">
+        <form >
+          <center>
+            <b>
+              <h1>Solana AirDrop</h1>
+              <h2>Just put your Address get your devnet solana</h2></b
+            >
+          </center>
+<div class="formming">
+
+  <label for="fname">Enter wallet Addrerss</label><br />
+  <input type="text" id="walletAddress" name="walletAddress" /><br />
+  <label for="fname">Enter Amount</label><br />
+  <input type="text" id="amount" name="amount" /><br />
+  <button type="button" onclick="submitForm()">AirDrop</button>
+</div>
+        </form>
+      </div>
+    </div>
+
+    <footer></footer>
+
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    <script>
+        const { Connection, PublicKey} = solanaWeb3;
+    </script>
+    <script>
+    function submitForm()
+        {
+            let  solanaPublicKey = document.getElementById("walletAddress").value;
+            let amount=document.getElementById("amount").value;
+            const connection = new Connection("https://api.devnet.solana.com");
+        
+            let publicKeyObject = new PublicKey(solanaPublicKey);
+
+            const fn = (async () => {
+                let txhash = await connection.requestAirdrop(publicKeyObject,amount*1e9);
+                console.log(`txhash: ${txhash}`);
+                })();
+            const inputText = document.getElementById("walletAddress").value;
+            // document.getElementById("send").innerHTML = `${amount} SOL Successfully send to ${inputText}!!!`;
+            alert ("You transferred: " + amount + " SOL to this wallet " + solanaPublicKey);
+        }
+        </script>
+
+
+  </body>
+</html>
