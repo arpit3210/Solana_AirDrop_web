@@ -5,6 +5,7 @@
 //   let airdropAmount = document.getElementById("airdropAmount").value;
 //   let lamports = airdropAmount * 1e9;
 
+
 //   const connection = new Connection("https://api.devnet.solana.com");
 
 //   var publicKeyObject = new PublicKey(solanaPublicKey);
